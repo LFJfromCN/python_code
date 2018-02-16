@@ -1,0 +1,3 @@
+In python you can deal with a list.
+In python you can deal with a tuple.
+In python you can use a variable without declaring it.
