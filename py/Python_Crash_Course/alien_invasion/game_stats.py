@@ -7,7 +7,9 @@ class GameStats( ):
         self.reset_stats( )
 
         #在任何情况下都不应该重置最高得分
-        self.high_score = 0
+        filename = 'highest_score.json'
+        with open(filename, 'r') as hs:
+            self.high_score = int(hs.read( ))
         
         #让游戏一开始处于非活跃状态
         self.game_active =False
