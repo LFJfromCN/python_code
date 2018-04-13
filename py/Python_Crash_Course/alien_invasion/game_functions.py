@@ -4,7 +4,11 @@ import pygame
 from bullet import Bullet
 from alien import Alien
 
-
+def save_high_score(stats):
+    """储存最高分的函数"""
+    with open('highest_score.json', 'w') as hs:
+            hs.write(str(stats.high_score))
+    
 def check_keydown_events(event, ai_settings, screen, stats, sb, ship, bullets):
     """响应按键"""
     if event.key == pygame.K_RIGHT:
@@ -14,8 +18,7 @@ def check_keydown_events(event, ai_settings, screen, stats, sb, ship, bullets):
     elif event.key == pygame.K_SPACE:
         fire_bullets(ai_settings, screen, ship, bullets)
     elif event.key == pygame.K_q:
-        with open('highest_score.json', 'w') as hs:
-            hs.write(str(stats.high_score))
+        save_high_score(stats )
             
         sys.exit( )
 
@@ -38,8 +41,8 @@ def check_events(ai_settings, screen, stats, sb, play_button, ship, aliens,bulle
     """响应按键和鼠标事件"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            with open('highest_score.json', 'w') as hs:
-                hs.write(str(stats.high_score))
+            save_high_score(stats)
+            
             sys.exit( )
 
         elif event.type == pygame.KEYDOWN:
