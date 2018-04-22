@@ -10,8 +10,8 @@ while True:
     #设置绘制窗口的尺寸
     plt.figure(figsize=(10, 6))
 
-    point_numbers = list(range(500))
-    plt.plot(rw.x_values, rw.y_values, c='purple', linewidth=0.8)
+    point_numbers = list(range(50))
+    plt.plot(rw.x_values, rw.y_values, c='purple', linewidth=1)
 
     #隐藏坐标轴
     plt.axes( ).get_xaxis( ).set_visible(False)

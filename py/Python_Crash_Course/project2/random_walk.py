@@ -11,19 +11,23 @@ class RandomWalk( ):
         self.x_values = [0]
         self.y_values = [0]
 
+    def get_step(self):
+        """一个用于确定每次漫步的方向和距离的方法"""
+        #决定前进方向以及沿着这个方向前进的距离
+        direction = choice([1, -1])   #1向右走，-1向左走
+        distance = choice([0, 1, 2, 3, 4, 5, 6, 7, 8])    #随机地在该列表中选择一个数
+        step = direction * distance
+
+        return step
+        
+
     def fill_walk(self):
         """计算随机漫步包含的所有点"""
 
         #不断漫步，直到列表达到指定的长度
         while len(self.x_values) < self.num_points:
-            #决定前进方向以及沿着这个方向前进的距离
-            x_direction = choice([1, -1])   #1向右走，-1向左走
-            x_distance = choice([0, 1, 2, 3, 4])    #随机地在该列表中选择一个数
-            x_step = x_direction * x_distance
-
-            y_direction = choice([1, -1])
-            y_distance = choice([0, 1, 2, 3, 4])
-            y_step = y_direction * y_distance
+            x_step = RandomWalk.get_step(self)
+            y_step = RandomWalk.get_step(self)
 
             #拒绝原地踏步
             if x_step == 0 and y_step ==0:
